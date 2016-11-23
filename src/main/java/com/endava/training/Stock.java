@@ -4,11 +4,13 @@ import java.util.Map;
 
 public interface Stock {
 
+    int getNrOfItemsInStock();
+
     Map<Product, Integer> getOutstandingStock();
 
     /**
      * Should remove one item of type Product from stock
-     * if is the last one it should revove the product from the stock
+     * if is the last one it should remove the product from the stock
      * @return the state of the stock after product removal
      */
     Map<Product, Integer> removeProductFromStock(Product product);

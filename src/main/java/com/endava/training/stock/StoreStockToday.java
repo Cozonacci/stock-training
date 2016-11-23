@@ -7,7 +7,12 @@ import java.util.Map;
 
 public class StoreStockToday extends AbstractStock {
 
-    public Map<Product, Integer> reducePremiumProductsPrice(int percentage){
+    /**
+     * Reduce specific product price by a given percentage (int value for now)
+     *
+     * @return stock state after price cut-off
+     */
+    public Map<Product, Integer> reducePremiumProductsPrice(int percentage) {
         return null;
     }
 }

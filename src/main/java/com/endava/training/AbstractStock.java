@@ -19,10 +19,20 @@ public abstract class AbstractStock implements Stock {
         this.currentStock = currentStock;
     }
 
+    @Override
     public Map<Product, Integer> getOutstandingStock() {
         return currentStock;
     }
 
+    @Override
+    public Map<Product, Integer> addProductToStock(Product product, Integer nrOfItems) {
+        final Integer productItems = currentStock.get(product);
+        if (productItems == null) currentStock.put(product, nrOfItems);
+        else currentStock.put(product, productItems + nrOfItems);
+        return currentStock;
+    }
+
+    @Override
     public Map<Product, Integer> removeProductFromStock(Product product) {
         final Integer productItems = currentStock.get(product);
         if (productItems == 1) currentStock.remove(product);
@@ -30,10 +40,12 @@ public abstract class AbstractStock implements Stock {
         return currentStock;
     }
 
-    public Map<Product, Integer> addProductToStock(Product product, Integer nrOfItems) {
-        final Integer productItems = currentStock.get(product);
-        if (productItems == null) currentStock.put(product, nrOfItems);
-        else currentStock.put(product, productItems + nrOfItems);
-        return currentStock;
+    @Override
+    public int getNrOfItemsInStock() {
+        int totalNrOfItemsInStock = 0;
+        for (int eachProductItems : currentStock.values()) {
+            totalNrOfItemsInStock += eachProductItems;
+        }
+        return totalNrOfItemsInStock;
     }
 }
